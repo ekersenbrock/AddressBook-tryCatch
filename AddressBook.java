@@ -139,6 +139,9 @@ public class AddressBook
     public void removeDetails(String key)
         throws NoMatchingDetailsException
     {
+        // Issue!!! Method never throws IllegalArgumentExeption
+        // Revisit, this may be because it is a runtime exception whereas
+        // NoMatchingDetailsException is checked. Revisit.
         if(key == null){
                 throw new IllegalArgumentException("Key must not be blank");
             }
