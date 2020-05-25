@@ -76,14 +76,19 @@ public class AddressBook
                               throws NoMatchingDetailsException
     {
         if(details == null) {
-            throw new IllegalArgumentException("Null details passed to changeDetails.");
+            throw new IllegalArgumentException
+                ("Null details passed to changeDetails.");
         }
         if(oldKey == null){
-            throw new IllegalArgumentException("Null key passed to changeDetails.");
+            throw new IllegalArgumentException
+                ("Null key passed to changeDetails.");
         }
         if(keyInUse(oldKey)){
             removeDetails(oldKey);
             addDetails(details);
+        }
+        else{
+            throw new NoMatchingDetailsException(oldKey);
         }
     }
     
