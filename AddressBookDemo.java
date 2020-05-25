@@ -17,7 +17,7 @@ public class AddressBookDemo
      * a view of the data.
      */
     public AddressBookDemo()
-        throws NoMatchingDetailsException
+        throws NoMatchingDetailsException, DuplicateKeyException
     {
         ContactDetails[] sampleDetails = {
             new ContactDetails("david",   "08459 100000", "address 1"),
@@ -34,6 +34,7 @@ public class AddressBookDemo
             book.addDetails(details);
         }
         interaction = new AddressBookTextInterface(book);
+        showInterface();
     }
 
     /**

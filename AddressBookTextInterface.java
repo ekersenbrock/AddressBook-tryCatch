@@ -81,9 +81,15 @@ public class AddressBookTextInterface
         String address = parser.readLine();
         ContactDetails newContact = new ContactDetails(key, phone, address);
         try{
-             book.changeDetails(key, newContact);
+            book.changeDetails(key, newContact);
         }
         catch(NoMatchingDetailsException e){
+            System.out.println(e);
+        }
+        catch(IllegalArgumentException e){
+            System.out.println(e);
+        }
+        catch(DuplicateKeyException e){
             System.out.println(e);
         }
     }
@@ -99,8 +105,13 @@ public class AddressBookTextInterface
         String phone = parser.readLine();
         System.out.print("Address: ");
         String address = parser.readLine();
-        book.addDetails(new ContactDetails(name, phone, address));
-    }
+        try{
+            book.addDetails(new ContactDetails(name, phone, address));
+        }   
+        catch(DuplicateKeyException e){
+            System.out.println(e);
+        }
+    }   
     
     /**
      * Find an entry matching a key.
@@ -123,10 +134,10 @@ public class AddressBookTextInterface
         try{
             book.removeDetails(key); 
         }
-        catch(NoMatchingDetailsException e){
+        catch(IllegalArgumentException e){
             System.out.println(e);
         }
-        catch(IllegalArgumentException e){
+        catch(NoMatchingDetailsException e){
             System.out.println(e);
         }
     }

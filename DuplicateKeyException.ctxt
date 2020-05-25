@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=DuplicateKeyException
+comment0.text=\r\n\ Exercise\ 14.34\r\n\ New\ exeption\ to\ be\ used\ when\ there\ is\ an\ attempt\ to\ duplicate\ information.\r\n\r\n\ @author\ Erik\ K\r\n\ @version\ 5/25/2020\r\n
+comment1.params=key
+comment1.target=DuplicateKeyException(java.lang.String)
+comment1.text=\r\n\ Store\ the\ details\ in\ error.\r\n\ @param\ key\ The\ key\ containing\ duplicate\ information.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getKey()
+comment2.text=\r\n\ @return\ The\ key\ in\ error.\r\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ @return\ A\ diagnostic\ string\ containing\ the\ key\ in\ error.\r\n
+numComments=4

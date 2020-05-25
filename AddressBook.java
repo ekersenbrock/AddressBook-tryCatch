@@ -23,7 +23,6 @@ public class AddressBook
      * Perform any initialization for the address book.
      */
     public AddressBook()
-    throws NoMatchingDetailsException
     {
         book = new TreeMap<>();
         numberOfEntries = 0;
@@ -55,12 +54,21 @@ public class AddressBook
      * @param details The details to associate with the person.
      */
     public void addDetails(ContactDetails details)
+    throws DuplicateKeyException
     {
         if(details == null) {
             throw new IllegalArgumentException("Null details passed to addDetails.");
         }
-        book.put(details.getName(), details);
-        book.put(details.getPhone(), details);
+        String name = details.getName();
+        String phNum = details.getPhone();
+        if(keyInUse(name)){
+            throw new DuplicateKeyException(name);
+        }
+        if(keyInUse(phNum)){
+            throw new DuplicateKeyException(phNum);
+        }
+        book.put(name, details);
+        book.put(phNum, details);
         numberOfEntries++;
     }
     
@@ -73,7 +81,8 @@ public class AddressBook
      */
     public void changeDetails(String oldKey,
                               ContactDetails details)
-                              throws NoMatchingDetailsException
+                              throws NoMatchingDetailsException,
+                              DuplicateKeyException
     {
         if(details == null) {
             throw new IllegalArgumentException
