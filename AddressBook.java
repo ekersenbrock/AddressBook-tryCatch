@@ -139,7 +139,7 @@ public class AddressBook
     public void removeDetails(String key)
         throws NoMatchingDetailsException
     {
-        if(key == ""){
+        if(key == null){
                 throw new IllegalArgumentException("Key must not be blank");
             }
         if(!keyInUse(key)) {
